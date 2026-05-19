@@ -32,3 +32,8 @@ async function processStream(stream) {
     totalSum
   };
 }
+function calculateAverage(sum, count) {
+  return count === 0
+    ? 0
+    : sum / count;
+}
