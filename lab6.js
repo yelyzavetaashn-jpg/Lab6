@@ -12,3 +12,23 @@ class LargeDataStream {
     }
   }
 }
+async function processStream(stream) {
+  let processedCount = 0;
+  let totalSum = 0;
+
+  for await (const item of stream.generate()) {
+    processedCount++;
+    totalSum += item.value;
+
+    if (processedCount % 1000 === 0) {
+      console.log(
+        `Processed ${processedCount} items`
+      );
+    }
+  }
+
+  return {
+    processedCount,
+    totalSum
+  };
+}
