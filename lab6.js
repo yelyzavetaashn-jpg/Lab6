@@ -37,3 +37,23 @@ function calculateAverage(sum, count) {
     ? 0
     : sum / count;
 }
+async function runExample() {
+  const stream = new LargeDataStream(10000);
+
+  console.log("Starting stream processing...");
+
+  const result = await processStream(stream);
+
+  console.log("Processing completed");
+  console.log("Items processed:", result.processedCount);
+  console.log("Total sum:", result.totalSum);
+
+  const average = calculateAverage(
+    result.totalSum,
+    result.processedCount
+  );
+
+  console.log("Average value:", average);
+}
+
+runExample();
